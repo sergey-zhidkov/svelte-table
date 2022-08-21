@@ -3,8 +3,6 @@
 	import SvelteTable from "./components/SvelteTable.svelte"
 
 	let tableDataPromise = fetchData()
-	// $: tableData = undefined
-	// fetchData().then(data => tableData = data).catch(e => console.error(e))
 </script>
 
 <main>
@@ -13,7 +11,7 @@
 	{:then data}
 		<SvelteTable data={data}/>
 	{:catch error}
-		<div class="error-message">error</div>
+		<div class="error-message">{error}</div>
 	{/await}
 </main>
 
