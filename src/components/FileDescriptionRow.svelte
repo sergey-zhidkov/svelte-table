@@ -7,7 +7,7 @@
 
 <div class="tr {isSelected ? 'selected' : '' }">
 	<div class="td checkbox-container">
-		<input type="checkbox" on:change={() => onChange(id)}/>
+		<input type="checkbox" on:change={() => onChange(id)} checked={isSelected}/>
 	</div>
 	<div class="td"><span>{fileDescription.name}</span></div>
 	<div class="td"><span>{fileDescription.device}</span></div>

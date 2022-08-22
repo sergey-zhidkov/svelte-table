@@ -8,23 +8,41 @@
 		isSelected: false,
 		fileDescription: d,
 	}))
+	$: selectedCount = state.filter(s => s.isSelected).length
 
-	const handleOnChange = (id: number) => {
+	const handleRowOnChange = (id: number) => {
 		const rowState = state[id]
 		rowState.isSelected = !rowState.isSelected
+		state = [...state]
+		console.log('new state', state)
+	}
+
+	const handleSelectAllOnChange = (isChecked: boolean) => {
+		// const rowState = state[id]
+		// rowState.isSelected = !rowState.isSelected
+		// state = [...state]
+		if (isChecked) {
+			state.forEach(s => s.isSelected = true)
+		} else {
+			state.forEach(s => s.isSelected = false)
+		}
 		state = [...state]
 	}
 </script>
 
 <div class="table-container">
-	<TableHead selectedCount={state.filter(s => s.isSelected).length} totalCount={state.length} />
+	<TableHead
+		selectedCount={selectedCount}
+		totalCount={state.length}
+		onChange={handleSelectAllOnChange}
+		/>
 	<div class="tbody">
 		{#each state as row, i}
 			<FileDescriptionRow
 				id={i}
 				fileDescription={row.fileDescription}
 				isSelected={row.isSelected}
-				onChange={handleOnChange}
+				onChange={handleRowOnChange}
 				/>
 		{/each}
 	</div>
