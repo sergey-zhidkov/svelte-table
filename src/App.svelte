@@ -25,6 +25,7 @@
 
 <main>
 	{#await tableDataPromise}
+		<!-- Placeholder for a real loading spinner -->
 		<div class="spinner">Loading...</div>
 	{:then data}
 		<SvelteTable data={data} onDownloadClick={handleOnDownloadClick}/>

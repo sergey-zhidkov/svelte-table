@@ -53,6 +53,7 @@
 
 <style>
 	.table-container {
+		box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.35);
 	}
 
 	.thead {
@@ -64,10 +65,11 @@
 		gap: 2px;
 		min-height: 2.5em;
 		background-color: white;
+		border-bottom: 1px solid lightgray;
 	}
 
 	:global(.table-container .td), :global(.table-container .th) {
-		border: 1px dashed black;
+		/* border: 1px dashed black; */
 
 		display: flex;
 		align-items: center;

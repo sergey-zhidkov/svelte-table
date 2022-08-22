@@ -48,10 +48,11 @@
 		text-transform: capitalize;
 	}
 
-	.tr:hover {
-		background-color: rgb(245, 245, 245);
-	}
 	.tr.selected {
 		background-color: rgb(238, 238, 238);
+	}
+
+	.tr:hover {
+		background-color: rgb(245, 245, 245);
 	}
 </style>
