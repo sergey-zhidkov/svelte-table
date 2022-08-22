@@ -66,11 +66,9 @@
 	}
 
 	.selected-label-container {
-		/* grid-column: auto / span 2; */
 		grid-area: sl;
 	}
 	.download-button-container {
-		/* grid-column: auto / span 2; */
 		display: flex;
 		align-items: center;
 		grid-area: do;

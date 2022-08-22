@@ -28,6 +28,7 @@ export function fetchData(): Promise<FileDescription[]> {
     ]
 
     return new Promise((resolve) =>
+        // Imitate a server response delay of 500ms
         setTimeout(() => {
             resolve(data)
         }, 500)
