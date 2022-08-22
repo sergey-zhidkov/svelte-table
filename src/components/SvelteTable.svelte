@@ -1,38 +1,44 @@
 <script lang="ts">
+	import FileDescriptionRow from "./FileDescriptionRow.svelte"
+	import TableHead from "./TableHead.svelte";
+
 	export let data: FileDescription[] = []
+
+	// $: state = data.
 	console.log(data)
 </script>
 
-<main>
-	<div class="table-container">
-		<div class="thead">
-			<div class="tr">
-				<div class="th"><intput type="checkbox"/></div>
-				<div class="th"><button>Download Selected</button></div>
-			</div>
-			<div class="tr">
-				<div class="th"></div>
-				<div class="th"><span>Name</span></div>
-				<div class="th"><span>Device</span></div>
-				<div class="th"><span>Path</span></div>
-				<div class="th"><span>Status</span></div>
-			</div>
-		</div>
-		<div class="tbody">
-			{#each data as row (row.path)}
-				<div class="tr">
-					<div class="td"><input type="checkbox"/></div>
-					<div class="td"><span>{row.name}</span></div>
-					<div class="td"><span>{row.device}</span></div>
-					<div class="td"><span>{row.path}</span></div>
-					<div class="td"><div class="status-icon"></div><span>{row.status}</span></div>
-				</div>
-			{/each}
-		</div>
+<div class="table-container">
+	<TableHead selected={1} />
+	<div class="tbody">
+		{#each data as row (row.path)}
+			<FileDescriptionRow fileDescription={row} isSelected />
+		{/each}
 	</div>
-	<h1>{data}</h1>
-</main>
+</div>
 
 <style>
+	.table-container {
+	}
+
+	.thead {
+
+	}
+
+	:global(.table-container .tr) {
+		display: grid;
+		grid-template-columns: 2em 1fr 1fr 5fr 1fr;
+		gap: 2px;
+		min-height: 2.5em;
+		background-color: white;
+	}
+
+	:global(.table-container .td), :global(.table-container .th) {
+		border: 1px dashed black;
+
+		display: flex;
+		align-items: center;
+		justify-content: left;
+	}
 
 </style>

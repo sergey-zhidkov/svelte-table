@@ -30,6 +30,6 @@ export function fetchData(): Promise<FileDescription[]> {
     return new Promise((resolve) =>
         setTimeout(() => {
             resolve(data)
-        }, 250)
+        }, 500)
     )
 }
