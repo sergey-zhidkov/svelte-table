@@ -56,24 +56,27 @@
 		box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.35);
 	}
 
-	.thead {
-	}
-
 	:global(.table-container .tr) {
 		display: grid;
-		grid-template-columns: 2em 1fr 1fr 5fr 1fr;
+		grid-template-columns: 2em 1fr 1fr 4fr 1fr;
 		gap: 2px;
 		min-height: 2.5em;
 		background-color: white;
 		border-bottom: 1px solid lightgray;
+		align-content: center;
 	}
 
 	:global(.table-container .td), :global(.table-container .th) {
-		/* border: 1px dashed black; */
-
 		display: flex;
 		align-items: center;
 		justify-content: left;
+
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	:global(.table-container .th) {
+		font-weight: 600;
 	}
 
 </style>
