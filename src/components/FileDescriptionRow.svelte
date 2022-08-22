@@ -24,10 +24,6 @@
 		justify-content: center;
 	}
 
-	.checkbox-container input[type="checkbox"] {
-		margin: 0;
-	}
-
 	.status-container {
 		display: flex;
 		align-items: center;
