@@ -4,15 +4,28 @@
 
 	export let data: FileDescription[] = []
 
-	// $: state = data.
-	console.log(data)
+	$: state = data.map(d=> ({
+		isSelected: false,
+		fileDescription: d,
+	}))
+
+	const handleOnChange = (id: number) => {
+		const rowState = state[id]
+		rowState.isSelected = !rowState.isSelected
+		state = [...state]
+	}
 </script>
 
 <div class="table-container">
-	<TableHead selected={1} />
+	<TableHead selectedCount={state.filter(s => s.isSelected).length} totalCount={state.length} />
 	<div class="tbody">
-		{#each data as row (row.path)}
-			<FileDescriptionRow fileDescription={row} isSelected />
+		{#each state as row, i}
+			<FileDescriptionRow
+				id={i}
+				fileDescription={row.fileDescription}
+				isSelected={row.isSelected}
+				onChange={handleOnChange}
+				/>
 		{/each}
 	</div>
 </div>
@@ -22,7 +35,6 @@
 	}
 
 	.thead {
-
 	}
 
 	:global(.table-container .tr) {

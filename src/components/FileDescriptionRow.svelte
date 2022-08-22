@@ -1,10 +1,14 @@
 <script lang="ts">
+	export let id: number
 	export let fileDescription: FileDescription
 	export let isSelected = false
+	export let onChange: (id: number) => void
 </script>
 
-<div class={"tr"}>
-	<div class="td checkbox-container"><input type="checkbox"/></div>
+<div class="tr {isSelected ? 'selected' : '' }">
+	<div class="td checkbox-container">
+		<input type="checkbox" on:change={() => onChange(id)}/>
+	</div>
 	<div class="td"><span>{fileDescription.name}</span></div>
 	<div class="td"><span>{fileDescription.device}</span></div>
 	<div class="td"><span>{fileDescription.path}</span></div>
@@ -18,6 +22,10 @@
 <style>
 	.checkbox-container {
 		justify-content: center;
+	}
+
+	.checkbox-container input[type="checkbox"] {
+		margin: 0;
 	}
 
 	.status-container {
@@ -48,6 +56,6 @@
 		background-color: rgb(245, 245, 245);
 	}
 	.tr.selected {
-		background-color: rgb(245, 245, 245);
+		background-color: rgb(238, 238, 238);
 	}
 </style>

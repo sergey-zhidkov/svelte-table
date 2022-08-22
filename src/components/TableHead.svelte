@@ -1,14 +1,15 @@
 <script lang="ts">
-	export let selected: number = 0
+	export let selectedCount: number = 0
+	export let totalCount: number
 
-	$: selectedText = selected === 0 ? "None Selected" : `Selected ${selected}`
+	$: selectedText = selectedCount === 0 ? "None Selected" : `Selected ${selectedCount}`
 </script>
 
 <div class="thead">
 	<div class="tr">
-		<div class="th"><intput type="checkbox"/></div>
-		<div class="th selected-label"><span>{selectedText}</span></div>
-		<div class="th download-button"><button>Download Selected</button></div>
+		<div class="th indeterminate-checkbox-container"><intput type="checkbox" class="indeterminate-checkbox"/></div>
+		<div class="th selected-label-container"><span>{selectedText}</span></div>
+		<div class="th download-button-container"><button>Download Selected</button></div>
 	</div>
 	<div class="tr">
 		<div class="th"></div>
@@ -20,10 +21,10 @@
 </div>
 
 <style>
-	.selected-label {
+	.selected-label-container {
 		grid-column: auto / span 2;
 	}
-	.download-button {
+	.download-button-container {
 		grid-column: auto / span 2
 	}
 </style>
